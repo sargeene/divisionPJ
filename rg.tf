@@ -1,4 +1,4 @@
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
+resource "azurerm_resource_group" "this_rg" {
+  name     = "${local.owner}-${var.rg}-${local.environment}"
   location = "uksouth"
 }
