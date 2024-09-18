@@ -19,7 +19,7 @@ variable "userwinvm"{
     default = "user-win-vm"
 }
 variable "dbwinvm"{
-    description = "windows virtual machine for database"
+    description = "windows virtual machine name for database"
     type = string
     default = "db-win-vm"
 }
@@ -29,16 +29,20 @@ variable "dbvnet"{
     default = "db-virtualnetwork"
 }
 variable "dbsubnet"{
-    description = "network interface card for database"
+    description = "subnet for database"
     type = string
     default = "db-subnet"
 }
 variable "dbnic"{
-    description = "windows virtual machine for users"
+    description = "network interface card for database"
     type = string
     default = "db-nic"
 }
-
+variable "vmvnet"{
+    description = "windows virtual machine name for users"
+    type = string
+    default = "user-win-vm"
+}
 
 
 
