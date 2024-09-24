@@ -43,7 +43,53 @@ variable "vmvnet"{
     type = string
     default = "user-win-vm"
 }
-
-
-
-
+variable "db_private_endoint"{
+    description = "private endoint for database"
+    type = string
+    default = "db-private-endoint"
+}
+variable "db_private_service_connection" {
+  description = "db private dns service connection name"
+  type        = string
+  default     = "db-private-service-connection"
+}
+variable "db_private_dns_group" {
+  description = "db private dns group name"
+  type        = string
+  default     = "db-private-dns-group"
+}
+variable "db_private_dns_zone" {
+  description = "db private dns zone name"
+  type        = string
+  default     = "privatelink.mysql.database.azure.com"
+}
+variable "db_private_dns_vnet_link" {
+  description = "db private dns vnet link name"
+  type        = string
+  default     = "dbvnetlink"
+}
+variable "db_private_service_connection" {
+  description = "db private dns service connection name"
+  type        = string
+  default     = "db-private-service-connection"
+}
+variable "this_mysql_fs" {
+  description = "mysql flexible server name"
+  type        = string
+  default     = "mysql-flexible-server"
+}
+variable "this_flexible_database" {
+  description = "flexible database name"
+  type        = string
+  default     = "flexible-database"
+}
+variable "flexible_db_username" {
+  description = "flexible database admin login username"
+  type        = string
+  default     = "psqladmin"
+}
+variable "flexible_db_password" {
+  description = "flexible database admin password"
+  type        = string
+  default     = "H@Sh1CoR3!"
+}
