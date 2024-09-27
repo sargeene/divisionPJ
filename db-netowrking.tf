@@ -1,9 +1,3 @@
-resource "azurerm_virtual_network" "this_dbvnet" {
-  name                = "${local.owner}-${var.dbvnet}-${local.environment}"
-  address_space       = ["10.0.0.0/17"]
-  location            = azurerm_resource_group.this_rg.location
-  resource_group_name = azurerm_resource_group.this_rg.name
-}
 
 resource "azurerm_subnet" "this_dbsubnet" {
   name                 = "${local.owner}-${var.dbsubnet}-${local.environment}"
@@ -19,7 +13,7 @@ resource "azurerm_network_interface" "this_dbnic" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.example.id
+    subnet_id                     = azurerm_subnet.this_dbsubnet.id
     private_ip_address_allocation = "Dynamic"
   }
 }

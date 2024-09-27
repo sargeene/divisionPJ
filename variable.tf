@@ -78,7 +78,7 @@ variable "this_mysql_fs" {
   type        = string
   default     = "mysql-flexible-server"
 }
-variable "this_flexible_database" {
+variable "this_mysql_flexible_database" {
   description = "flexible database name"
   type        = string
   default     = "flexible-database"
@@ -92,4 +92,19 @@ variable "flexible_db_password" {
   description = "flexible database admin password"
   type        = string
   default     = "H@Sh1CoR3!"
+}
+variable "key_vault" {
+  description = "flexible database admin password"
+  type        = string
+  default     = "H@Sh1CoR3!"
+}
+variable "vnet_peer1to2" {
+  description = "vnet peering vnet1 to vnet 2"
+  type        = string
+  default     = "vnet-peer1to2"
+}
+variable "vnet_peer2to1" {
+  description = "vnet peering vnet2 to vnet 1"
+  type        = string
+  default     = "vnet-peer2to1"
 }
