@@ -1,4 +1,3 @@
-
 resource "azurerm_subnet" "this_dbsubnet" {
   name                 = "${local.owner}-${var.dbsubnet}-${local.environment}"
   resource_group_name  = azurerm_resource_group.this_rg.name

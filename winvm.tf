@@ -1,14 +1,14 @@
 
 
-resource "azurerm_windows_virtual_machine" "example" {
-  name                = "example-machine"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
+resource "azurerm_windows_virtual_machine" "this_winvm" {
+  name                = "${local.owner}-${var.win_vm_name}-${local.environment}"
+  resource_group_name = azurerm_resource_group.this_rg.name
+  location            = azurerm_resource_group.this_rg.location
   size                = "Standard_F2"
-  admin_username      = "adminuser"
-  admin_password      = "P@$$w0rd1234!"
+  admin_username      = var.win_vm_username
+  admin_password      = azurerm_key_vault_secret.this_vm_secret.value
   network_interface_ids = [
-    azurerm_network_interface.example.id,
+    azurerm_network_interface.this_nic.id,
   ]
 
   os_disk {
@@ -22,4 +22,11 @@ resource "azurerm_windows_virtual_machine" "example" {
     sku       = "2016-Datacenter"
     version   = "latest"
   }
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.this_managedidentity.id]
+  }
+  #The identity {} block is used in a place where the password is generated. 
+  #It must be placed in thesame block of code where the password lies.
+  #It signifies that the identity of the password is user assigned as stated in managedidentity.tf
 }

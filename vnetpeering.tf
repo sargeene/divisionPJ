@@ -18,9 +18,6 @@ resource "azurerm_virtual_network_peering" "this_vnet_peering_1to2" {
   virtual_network_name      = azurerm_virtual_network.this_dbvnet.name
   remote_virtual_network_id = azurerm_virtual_network.this_vmvnet.id
 
-  triggers = {
-    remote_address_space = join(",", azurerm_virtual_network.this_vmvnet.address_space)
-  }
   depends_on = [ azurerm_virtual_network.this_dbvnet, azurerm_virtual_network.this_vmvnet ]
 }
 
@@ -30,8 +27,5 @@ resource "azurerm_virtual_network_peering" "this_vnet_peering_2to1" {
   virtual_network_name      = azurerm_virtual_network.this_vmvnet.name
   remote_virtual_network_id = azurerm_virtual_network.this_dbvnet.id
 
-  triggers = {
-    remote_address_space = join(",", azurerm_virtual_network.this_dbvnet.address_space)
-  }
   depends_on = [ azurerm_virtual_network.this_dbvnet, azurerm_virtual_network.this_vmvnet ]
 }

@@ -27,3 +27,24 @@ resource "azurerm_key_vault_access_policy" "this_rasheed_access_policy" {
     "set"
   ]
 }
+
+resource "azurerm_key_vault_access_policy" "this_user_assigned_identity" {
+  key_vault_id = azurerm_key_vault.this_keyvault.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_user_assigned_identity.this_managedidentity.principal_id
+
+  secret_permissions = [
+    "Get"
+  ]
+}
+
+resource "azurerm_key_vault_secret" "this_vm_secret" {
+  name         = "${local.owner}-${var.vm_secret}-${local.environment}"
+  value        = random_password.this_password.result
+  key_vault_id = azurerm_key_vault.this_keyvault.id
+}
+resource "azurerm_key_vault_secret" "this_felxible_Server_secret" {
+  name         = "${local.owner}-${var.flexible_server_secret}-${local.environment}"
+  value        = random_password.this_password.result
+  key_vault_id = azurerm_key_vault.this_keyvault.id
+}

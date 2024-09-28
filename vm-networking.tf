@@ -5,14 +5,15 @@ resource "azurerm_subnet" "this_vmsubnet" {
   address_prefixes     = ["10.0.2.0/24"]
 }
 
-resource "azurerm_network_interface" "this_vm_nic" {
-  name                = "example-nic"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+resource "azurerm_network_interface" "this_vmnic" {
+  name                = "${local.owner}-${var.vmnic}-${local.environment}"
+  location            = azurerm_resource_group.this_rg.location
+  resource_group_name = azurerm_resource_group.this_rg.name
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.example.id
+    subnet_id                     = azurerm_subnet.this_vmsubnet.id
     private_ip_address_allocation = "Dynamic"
+    #private_ip_address            = "10.0.2.9"
   }
 }
