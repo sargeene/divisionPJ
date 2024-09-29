@@ -11,7 +11,7 @@ variable "environment"{
 variable "rg"{
     description = "resource group"
     type = string
-    default = "rg_name"
+    default = "rg"
 }
 variable "userwinvm"{
     description = "windows virtual machine for users"
@@ -68,11 +68,11 @@ variable "db_private_dns_vnet_link" {
   type        = string
   default     = "dbvnetlink"
 }
-variable "db_private_service_connection" {
+/* variable "db_private_service_connection" {
   description = "db private dns service connection name"
   type        = string
   default     = "db-private-service-connection"
-}
+} */
 variable "this_mysql_fs" {
   description = "mysql flexible server name"
   type        = string
@@ -96,7 +96,7 @@ variable "flexible_db_password" {
 variable "key_vault" {
   description = "flexible database admin password"
   type        = string
-  default     = "H@Sh1CoR3!"
+  default     = "kv"
 }
 variable "vnet_peer1to2" {
   description = "vnet peering vnet1 to vnet 2"

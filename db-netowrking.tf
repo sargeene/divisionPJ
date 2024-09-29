@@ -2,7 +2,7 @@ resource "azurerm_subnet" "this_dbsubnet" {
   name                 = "${local.owner}-${var.dbsubnet}-${local.environment}"
   resource_group_name  = azurerm_resource_group.this_rg.name
   virtual_network_name = azurerm_virtual_network.this_dbvnet.name
-  address_prefixes     = ["10.0.3.0/24"]
+  address_prefixes     = ["10.1.3.0/24"]
 }
 
 resource "azurerm_network_interface" "this_dbnic" {
@@ -31,7 +31,7 @@ resource "azurerm_private_endpoint" "this_db_private_endpoint" {
 
   private_dns_zone_group {
     name                 = var.db_private_dns_group
-    private_dns_zone_ids = [azurerm_private_dns_zone.db_private_dns_zone.id]
+    private_dns_zone_ids = [azurerm_private_dns_zone.this_db_private_dns_zone.id]
   }
 }
 

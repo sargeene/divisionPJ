@@ -24,7 +24,7 @@ resource "azurerm_key_vault_access_policy" "this_rasheed_access_policy" {
     "Get",
     "Delete",
     "List",
-    "set"
+    "Set"
   ]
 }
 
