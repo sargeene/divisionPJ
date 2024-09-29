@@ -23,4 +23,3 @@ terraform.rc
 *.auto.tfvars
 # Ignore the workspace files which are local environment settings
 .terraform-workspace
-provider.tf
