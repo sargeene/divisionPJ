@@ -168,4 +168,7 @@ variable "bastion_host"{
     type = string
     default = "bastion-host-name"
 }
-
+variable "subscription-id"{
+  description = "azure subscription id"
+  type        = string
+}
